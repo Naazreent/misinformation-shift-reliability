@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "scope": "all reachable commits and blobs",
+  "commit_count": 5,
+  "blob_count": 90,
+  "text_blobs_scanned": 88,
+  "binary_blobs_skipped_from_text_scan": 2,
+  "oversized_blobs_skipped_from_text_scan": 0,
+  "commit_metadata": [
+    {
+      "sha": "089241c667b469ae1727aa27435e7ea0d9e55935",
+      "author": "Naazreen Tabassum",
+      "committer": "Naazreen Tabassum",
+      "subject": "Build reproducible misinformation reliability baseline",
+      "email_policy": "github_noreply"
+    },
+    {
+      "sha": "1489d758e2e25571a8f02b1a1ad022d4f1193710",
+      "author": "Naazreen Tabassum",
+      "committer": "Naazreen Tabassum",
+      "subject": "Verify baseline protocols and publish traceable results",
+      "email_policy": "github_noreply"
+    },
+    {
+      "sha": "66a08615dbc71565d3e44e47e8d799e4b9bcc1f3",
+      "author": "Naazreen Tabassum",
+      "committer": "Naazreen Tabassum",
+      "subject": "Record final verified baseline runs",
+      "email_policy": "github_noreply"
+    },
+    {
+      "sha": "8b2f8471a3efded1f97d6373ce3d02fc34373173",
+      "author": "Naazreen Tabassum",
+      "committer": "Naazreen Tabassum",
+      "subject": "Reconstruct neural protocols and repeated-seed evaluation",
+      "email_policy": "github_noreply"
+    },
+    {
+      "sha": "2871a5eafd3b7b19fb98b895b65871482898a5c6",
+      "author": "Naazreen Tabassum",
+      "committer": "Naazreen Tabassum",
+      "subject": "Verify repeated-seed five-model reliability matrix",
+      "email_policy": "github_noreply"
+    }
+  ],
+  "checks": {
+    "secret_patterns": [
+      "aws_access_key",
+      "github_token",
+      "openai_key",
+      "password_assignment",
+      "private_key"
+    ],
+    "personal_patterns": [
+      "dissertation_filename",
+      "phone_number",
+      "student_identifier"
+    ],
+    "commit_email_policy": "GitHub noreply addresses only",
+    "forbidden_history_names": [
+      ".env",
+      "ifnd.csv"
+    ],
+    "reference_overlap_words": 20,
+    "reference_docx_sha256": "8017726e44fa83e4d2b3b4131c338f2b835edbcb7836a499898772282b834716"
+  },
+  "findings": []
+}
