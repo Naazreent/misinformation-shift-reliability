@@ -1,0 +1,11 @@
+{
+  "source_url": "https://colab.research.google.com/drive/1zwMF9JbC0mNnCdAlaiFPJDJBM_IttHyj?usp=sharing",
+  "downloaded_file_name": "fake_data_analysis.ipynb",
+  "downloaded_sha256": "a2a54a971d0c6f7f58022e24a7ac40e712138aeb65be01bd9ed375a198661926",
+  "downloaded_size_bytes": 4264446,
+  "preservation_file_name": "legacy_colab_stripped.ipynb",
+  "preservation_sha256": "2cc1450433094bc08f02d615729df326b57eeb358bd9ad70bba4bc823f4cb414",
+  "transformation": "All code-cell outputs were removed and execution counts set to null. Source cells were not intentionally rewritten.",
+  "evidence_status": "legacy_unverified",
+  "retrieved_date": "2026-08-22"
+}

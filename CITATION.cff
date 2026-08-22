@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this research reconstruction, please cite it using this metadata."
+title: "Misinformation Classification Reliability"
+type: software
+authors:
+  - family-names: Tabassum
+    given-names: Naazreen
+version: 0.1.0
+license: MIT
+keywords:
+  - misinformation detection
+  - distribution shift
+  - reproducibility
+  - natural language processing
+  - calibration
+

@@ -1,0 +1,10 @@
+claim_id,proposed_claim,status,evidence,allowed_wording
+C1,The supplied IFND copy contains 56714 rows and seven columns,verified,reports/data_audit.json,The supplied IFND copy contains 56714 rows and seven columns.
+C2,Source identity is strongly associated with the label,verified,reports/data_audit.json,A source-majority lookup is correct for approximately 98.49 percent of rows in the supplied copy.
+C3,Random splitting overestimates text-model generalisation,planned,paired random and source-disjoint run artifacts,We test whether random splitting overestimates generalisation.
+C4,BERT achieves 95 percent accuracy,legacy_unverified,original notebook saved output,The legacy notebook contains a saved 95 percent validation-accuracy output; it has not been independently reproduced.
+C5,LSTM achieves 93 percent accuracy,unsupported,legacy notebook contradicts dissertation table,Do not claim.
+C6,Five-fold cross-validation confirms model stability,unsupported,no executable fold implementation or fold records,Do not claim.
+C7,The reconstructed pipeline is reproducible,in_progress,clean setup tests run records and regenerated metrics,Designed for reproducibility; verification pending.
+C8,The project is novel or publication ready,unsupported,literature and complete experimental evidence required,Do not claim.
+

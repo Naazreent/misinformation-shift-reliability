@@ -1,0 +1,290 @@
+{
+  "categories": [
+    {
+      "category": "COVID-19",
+      "label_count": 2,
+      "rows": 8710,
+      "true_rate": 0.6796785304247991
+    },
+    {
+      "category": "ELECTION",
+      "label_count": 2,
+      "rows": 8396,
+      "true_rate": 0.9870176274416389
+    },
+    {
+      "category": "GOVERNMENT",
+      "label_count": 2,
+      "rows": 10923,
+      "true_rate": 0.6698709145839056
+    },
+    {
+      "category": "MISLEADIND",
+      "label_count": 1,
+      "rows": 18,
+      "true_rate": 0.0
+    },
+    {
+      "category": "MISLEADING",
+      "label_count": 1,
+      "rows": 4059,
+      "true_rate": 0.0
+    },
+    {
+      "category": "POLITICS",
+      "label_count": 2,
+      "rows": 8670,
+      "true_rate": 0.6283737024221453
+    },
+    {
+      "category": "TERROR",
+      "label_count": 1,
+      "rows": 4384,
+      "true_rate": 1.0
+    },
+    {
+      "category": "TRAD",
+      "label_count": 2,
+      "rows": 976,
+      "true_rate": 0.8504098360655737
+    },
+    {
+      "category": "VIOLENCE",
+      "label_count": 2,
+      "rows": 10578,
+      "true_rate": 0.5307241444507468
+    }
+  ],
+  "columns": [
+    "id",
+    "Statement",
+    "Image",
+    "Web",
+    "Category",
+    "Date",
+    "Label"
+  ],
+  "conflicting_label_groups": 522,
+  "cross_source_duplicate_groups": 672,
+  "exact_duplicate_rows": 0,
+  "file_name": "IFND.csv",
+  "label_counts": {
+    "0": 18914,
+    "1": 37800
+  },
+  "missing_values": {
+    "Category": 0,
+    "Date": 11321,
+    "Image": 0,
+    "Label": 0,
+    "Statement": 0,
+    "Web": 0,
+    "id": 0
+  },
+  "normalized_duplicate_groups": 1152,
+  "parsed_date_max": "2025-12-20T00:00:00",
+  "parsed_date_min": "2004-08-01T00:00:00",
+  "parsed_year_counts": {
+    "2004": 1,
+    "2011": 12,
+    "2012": 12,
+    "2013": 28,
+    "2014": 95,
+    "2015": 103,
+    "2016": 145,
+    "2017": 266,
+    "2018": 2308,
+    "2019": 6221,
+    "2020": 27311,
+    "2021": 1709,
+    "2025": 7172,
+    "missing_or_invalid": 11331
+  },
+  "recorded_categories": 9,
+  "recorded_sources": 29,
+  "rows": 56714,
+  "rows_in_normalized_duplicate_groups": 2326,
+  "sha256": "fafbb516c5d78a26ed1cfdf5077f989eae24c1258ad3c4de731ac6d6932505d6",
+  "source_majority_lookup_accuracy": 0.9848538279789822,
+  "sources": [
+    {
+      "label_count": 1,
+      "rows": 267,
+      "source": "AFP",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 59,
+      "source": "ALT",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 11321,
+      "source": "AUGMENT",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 806,
+      "source": "BOOMLIVE",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 449,
+      "source": "BSMEDIA",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 778,
+      "source": "CNN",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 136,
+      "source": "DAPAAN",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 175,
+      "source": "DIGITEYE",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 121,
+      "source": "DNAINDIA",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 21,
+      "source": "ENGLISHTRIBUNE",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 163,
+      "source": "FACTCHECKER",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 272,
+      "source": "FACTCRESCENDO",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 174,
+      "source": "FACTLY",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 3983,
+      "source": "INDIANEXPRESS",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 2,
+      "rows": 1698,
+      "source": "INDIATODAY",
+      "true_rate": 0.05418138987043581
+    },
+    {
+      "label_count": 1,
+      "rows": 15,
+      "source": "INDUSTANTIMES",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 8,
+      "source": "NDTV",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 2,
+      "rows": 572,
+      "source": "NEWSMETER",
+      "true_rate": 0.11538461538461539
+    },
+    {
+      "label_count": 2,
+      "rows": 2422,
+      "source": "NEWSMOBILE",
+      "true_rate": 0.0957886044591247
+    },
+    {
+      "label_count": 1,
+      "rows": 549,
+      "source": "ONEINDIA",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 2,
+      "rows": 387,
+      "source": "TEEKHIMIRCHI",
+      "true_rate": 0.32299741602067183
+    },
+    {
+      "label_count": 1,
+      "rows": 173,
+      "source": "THELOGICALINDIA",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 1,
+      "rows": 221,
+      "source": "THELOGICALINDIAN",
+      "true_rate": 0.0
+    },
+    {
+      "label_count": 2,
+      "rows": 8582,
+      "source": "THEPRINT",
+      "true_rate": 0.9599161034723841
+    },
+    {
+      "label_count": 1,
+      "rows": 4048,
+      "source": "THESTATEMAN",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 7202,
+      "source": "THESTATESMAN",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 238,
+      "source": "TIMESNOW",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 11832,
+      "source": "TRIBUNEINDIA",
+      "true_rate": 1.0
+    },
+    {
+      "label_count": 1,
+      "rows": 42,
+      "source": "WAHSARKAR",
+      "true_rate": 1.0
+    }
+  ],
+  "statement_length_characters": {
+    "maximum": 348,
+    "median": 77.0,
+    "minimum": 14
+  }
+}

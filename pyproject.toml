@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "misinformation-reliability"
+version = "0.1.0"
+description = "Reproducible evaluation of misinformation classifiers under source shift."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = {text = "MIT"}
+authors = [
+  {name = "Naazreen Tabassum"}
+]
+dependencies = [
+  "joblib==1.5.3",
+  "numpy==2.3.5",
+  "pandas==2.2.3",
+  "scikit-learn==1.8.0",
+  "scipy==1.17.0"
+]
+
+[project.scripts]
+misinfo-audit-data = "misinformation_reliability.cli:audit_main"
+misinfo-run = "misinformation_reliability.cli:run_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

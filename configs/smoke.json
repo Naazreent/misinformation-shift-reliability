@@ -1,0 +1,23 @@
+{
+  "name": "smoke_random_stratified",
+  "seed": 42,
+  "split_protocol": "random_stratified",
+  "train_fraction": 0.70,
+  "validation_fraction": 0.15,
+  "test_fraction": 0.15,
+  "deduplicate": true,
+  "smoke_rows_per_class": 250,
+  "tfidf": {
+    "ngram_min": 1,
+    "ngram_max": 1,
+    "min_df": 1,
+    "max_features": 3000,
+    "sublinear_tf": true
+  },
+  "logistic_regression": {
+    "C": 1.0,
+    "max_iter": 500,
+    "class_weight": "balanced"
+  }
+}
+

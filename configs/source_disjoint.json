@@ -1,0 +1,23 @@
+{
+  "name": "ifnd_source_disjoint_v1",
+  "seed": 42,
+  "split_protocol": "source_disjoint",
+  "train_fraction": 0.70,
+  "validation_fraction": 0.15,
+  "test_fraction": 0.15,
+  "deduplicate": true,
+  "smoke_rows_per_class": null,
+  "tfidf": {
+    "ngram_min": 1,
+    "ngram_max": 2,
+    "min_df": 2,
+    "max_features": 50000,
+    "sublinear_tf": true
+  },
+  "logistic_regression": {
+    "C": 1.0,
+    "max_iter": 1000,
+    "class_weight": "balanced"
+  }
+}
+

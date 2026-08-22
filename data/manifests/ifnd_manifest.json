@@ -1,0 +1,35 @@
+{
+  "dataset_id": "ifnd-researcher-supplied-copy",
+  "file_name": "IFND.csv",
+  "sha256": "fafbb516c5d78a26ed1cfdf5077f989eae24c1258ad3c4de731ac6d6932505d6",
+  "size_bytes": 11958894,
+  "rows": 56714,
+  "columns": [
+    "id",
+    "Statement",
+    "Image",
+    "Web",
+    "Category",
+    "Date",
+    "Label"
+  ],
+  "label_counts": {
+    "false": 18914,
+    "true": 37800
+  },
+  "missing_date_values": 11321,
+  "recorded_sources": 29,
+  "received_from": "Naazreen Tabassum",
+  "received_date": "2026-08-22",
+  "dissertation_source_description": "Kaggle public dataset uploaded by Sonal Garg",
+  "source_url": null,
+  "version": null,
+  "license": null,
+  "redistribution_status": "not permitted until source and licence are verified",
+  "notes": [
+    "The supplied CSV contains 56714 rows; the dissertation abstract reports 56768.",
+    "Date provenance requires review before temporal evaluation.",
+    "Raw data is excluded from Git."
+  ]
+}
+
