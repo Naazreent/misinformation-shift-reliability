@@ -101,6 +101,8 @@ def main() -> None:
             str(results_dir / "comparison_summary.csv"),
             "--gaps",
             str(results_dir / "protocol_gaps.csv"),
+            "--expected-seeds",
+            ",".join(str(seed) for seed in seed_values),
         ],
         cwd=repository,
         env=environment,
@@ -122,6 +124,24 @@ def main() -> None:
         json.loads((run_dir / "run_record.json").read_text(encoding="utf-8"))
         for run_dir in run_dirs
     ]
+    resolved_configs = [
+        json.loads((run_dir / "config_resolved.json").read_text(encoding="utf-8"))
+        for run_dir in run_dirs
+    ]
+    source_selection_seeds: dict[str, int] = {}
+    for run_dir, config in zip(run_dirs, resolved_configs, strict=True):
+        if config["split_protocol"] != "source_disjoint":
+            continue
+        metadata = json.loads(
+            (run_dir / "split_metadata.json").read_text(encoding="utf-8")
+        )
+        seed_key = str(config["seed"])
+        selected_seed = int(metadata["test_selection"]["selected_seed"])
+        previous = source_selection_seeds.setdefault(seed_key, selected_seed)
+        if previous != selected_seed:
+            raise ValueError(
+                f"Classical/neural source splits differ for seed {seed_key}"
+            )
     manifest = {
         "evidence_status": "verified_repeated_seed_matrix",
         "data_sha256": records[0]["data_version"],
@@ -143,12 +163,19 @@ def main() -> None:
             {
                 "run_id": record["run_id"],
                 "kind": kind,
+                "protocol": config["split_protocol"],
                 "seed": record["seed"],
+                "models": ["majority", "source_only_logreg", "tfidf_logreg"]
+                if kind == "classical"
+                else ["fnn", "cnn", "lstm", "bert_tiny"],
                 "status": record["status"],
                 "metrics_recomputed_from_predictions": True,
             }
-            for record, kind in zip(records, run_kinds, strict=True)
+            for record, kind, config in zip(
+                records, run_kinds, resolved_configs, strict=True
+            )
         ],
+        "source_disjoint_test_selection_seeds": source_selection_seeds,
         "limitations": [
             "Three prespecified seeds provide descriptive uncertainty but limited inferential power.",
             "BERT is represented by a pinned 2-layer BERT checkpoint for CPU-feasible reconstruction, not bert-base-uncased.",

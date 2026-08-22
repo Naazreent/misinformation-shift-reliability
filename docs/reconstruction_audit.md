@@ -80,17 +80,30 @@ they are excluded from the reproducible pipeline and cannot be cited as results.
    per-class failure are more informative.
 7. Saved outputs have no run IDs, resolved configuration, environment lock,
    data checksum, or code revision.
-8. Dataset source and redistribution licence are not recorded precisely enough
-   for public release.
+8. The dataset paper and exact Kaggle card can be identified, but the Kaggle
+   data card reports the dataset licence as `Unknown`; redistribution rights
+   therefore remain unresolved.
 
 ## Reconstruction decision
 
-The original reported model table will not be copied into the repository as a
-verified result. Version 0.1 establishes a data contract, duplicate policy,
-random and source-disjoint splits, deterministic baselines, saved predictions,
-and run metadata. Neural models will be reconstructed only after this protocol
-passes tests and the required compute is confirmed.
+The original reported model table is not copied into the repository as a
+verified result. Version 0.2 establishes a data contract, duplicate policy,
+random and source-disjoint splits, TF-IDF/FNN/CNN/LSTM/BERT-tiny model paths,
+three prespecified seeds, saved predictions, independent metric verification,
+and machine-readable aggregate results.
+
+The neural reconstruction preserves each legacy architecture's broad family
+while enforcing one controlled evaluation protocol. The FNN, CNN, and LSTM use
+train-only learned embeddings rather than the notebook's incomplete or
+inconsistent preprocessing state. BERT uses a pinned 2-layer BERT-tiny checkpoint
+to make full repeated evaluation CPU-feasible; it is not a reproduction of the
+legacy `bert-base-uncased` run. These decisions are explicit methodological
+changes, not concealed equivalence claims.
+
+Across the three verified holdouts, all four neural families have lower mean
+macro-F1 and higher mean calibration error under source shift. The small sample
+supports a descriptive reliability result, not a statistical-significance or
+generally quantified domain-shift claim.
 
 This approach preserves the work while preventing unsupported accuracy or
 cross-validation claims from reaching a public PhD portfolio.
-

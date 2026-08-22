@@ -1,25 +1,137 @@
 {
-  "evidence_status": "verified_single_seed_baseline",
+  "evidence_status": "verified_repeated_seed_matrix",
   "data_sha256": "fafbb516c5d78a26ed1cfdf5077f989eae24c1258ad3c4de731ac6d6932505d6",
-  "code_revision": "1489d758e2e25571a8f02b1a1ad022d4f1193710",
+  "code_revision": "8b2f8471a3efded1f97d6373ce3d02fc34373173",
+  "seeds": [13, 42, 87],
+  "protocols": ["random_stratified", "source_disjoint"],
+  "models": [
+    "majority",
+    "source_only_logreg",
+    "tfidf_logreg",
+    "fnn",
+    "cnn",
+    "lstm",
+    "bert_tiny"
+  ],
   "runs": [
     {
-      "run_id": "20260822T212805Z-ifnd_random_stratified_v1-338ab3f2",
+      "run_id": "20260822T222040Z-ifnd_random_stratified_v1_s13-bf4a171b",
+      "kind": "classical",
       "protocol": "random_stratified",
+      "seed": 13,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
       "status": "completed",
       "metrics_recomputed_from_predictions": true
     },
     {
-      "run_id": "20260822T212811Z-ifnd_source_disjoint_v1-682d7b1e",
+      "run_id": "20260822T222049Z-ifnd_source_disjoint_v1_s13-ec376912",
+      "kind": "classical",
       "protocol": "source_disjoint",
+      "seed": 13,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T222208Z-ifnd_random_stratified_v1_s42-54c7009b",
+      "kind": "classical",
+      "protocol": "random_stratified",
+      "seed": 42,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T222217Z-ifnd_source_disjoint_v1_s42-ec9d8de2",
+      "kind": "classical",
+      "protocol": "source_disjoint",
+      "seed": 42,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T222338Z-ifnd_random_stratified_v1_s87-28b99247",
+      "kind": "classical",
+      "protocol": "random_stratified",
+      "seed": 87,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T222346Z-ifnd_source_disjoint_v1_s87-4ff26b15",
+      "kind": "classical",
+      "protocol": "source_disjoint",
+      "seed": 87,
+      "models": ["majority", "source_only_logreg", "tfidf_logreg"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T222510Z-ifnd_neural_random_stratified_v1_s13-355702bc",
+      "kind": "neural",
+      "protocol": "random_stratified",
+      "seed": 13,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T223634Z-ifnd_neural_source_disjoint_v1_s13-5f0cc657",
+      "kind": "neural",
+      "protocol": "source_disjoint",
+      "seed": 13,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T220812Z-ifnd_neural_random_stratified_v1-f5cb5bb6",
+      "kind": "neural",
+      "protocol": "random_stratified",
+      "seed": 42,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T224858Z-ifnd_neural_source_disjoint_v1_s42-b65af54c",
+      "kind": "neural",
+      "protocol": "source_disjoint",
+      "seed": 42,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T230047Z-ifnd_neural_random_stratified_v1_s87-ffdbb0a0",
+      "kind": "neural",
+      "protocol": "random_stratified",
+      "seed": 87,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
+      "status": "completed",
+      "metrics_recomputed_from_predictions": true
+    },
+    {
+      "run_id": "20260822T231232Z-ifnd_neural_source_disjoint_v1_s87-15bf8cc9",
+      "kind": "neural",
+      "protocol": "source_disjoint",
+      "seed": 87,
+      "models": ["fnn", "cnn", "lstm", "bert_tiny"],
       "status": "completed",
       "metrics_recomputed_from_predictions": true
     }
   ],
+  "source_disjoint_test_selection_seeds": {
+    "13": 13609,
+    "42": 42766,
+    "87": 87028
+  },
   "limitations": [
-    "One seed and one selected source holdout",
-    "No confidence intervals",
-    "Neural architectures not yet reconstructed",
-    "Dataset source URL and licence still unverified"
+    "Three prespecified seeds provide descriptive uncertainty but limited inferential power.",
+    "BERT is represented by a pinned 2-layer checkpoint for CPU-feasible reconstruction, not bert-base-uncased.",
+    "Source-disjoint repetitions use distinct candidate-source blocks but only three selected holdouts.",
+    "The Kaggle dataset licence is marked Unknown; the CSV is not redistributed."
   ]
 }

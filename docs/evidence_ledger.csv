@@ -1,9 +1,11 @@
 claim_id,proposed_claim,status,evidence,allowed_wording
 C1,The supplied IFND copy contains 56714 rows and seven columns,verified,reports/data_audit.json,The supplied IFND copy contains 56714 rows and seven columns.
 C2,Source identity is strongly associated with the label,verified,reports/data_audit.json,A source-majority lookup is correct for approximately 98.49 percent of rows in the supplied copy.
-C3,Random splitting overestimates text-model generalisation,pilot_single_seed,reports/results/run_manifest.json,A single source holdout reduced TF-IDF macro-F1 by approximately 0.005; repeated holdouts are required.
+C3,Source shift reduces reconstructed neural-model performance,verified_descriptive,reports/results/comparison_summary.csv and reports/results/protocol_gaps.csv,Across three selected source-disjoint holdouts all four reconstructed neural families had lower mean macro-F1 than under random splitting; this is descriptive rather than a significance claim.
 C4,BERT achieves 95 percent accuracy,legacy_unverified,original notebook saved output,The legacy notebook contains a saved 95 percent validation-accuracy output; it has not been independently reproduced.
 C5,LSTM achieves 93 percent accuracy,unsupported,legacy notebook contradicts dissertation table,Do not claim.
 C6,Five-fold cross-validation confirms model stability,unsupported,no executable fold implementation or fold records,Do not claim.
-C7,The reconstructed baseline pipeline is reproducible,verified_locally,unit tests run records and independently recomputed metrics,The baseline pipeline was reproduced locally from the supplied CSV; public CI verification is pending repository publication.
-C8,The project is novel or publication ready,unsupported,literature and complete experimental evidence required,Do not claim.
+C7,The reconstructed five-model pipeline is reproducible,verified_locally,unit tests run records predictions metric recomputation and repeated-seed aggregate tables,The five-model matrix was reproduced locally from the supplied CSV under three prespecified seeds; public CI verification is pending repository publication.
+C8,The project is novel or publication ready,unsupported,literature and broader experimental evidence required,Do not claim.
+C9,BERT-tiny is the dissertation BERT model,not_equivalent,configs and docs/reconstruction_audit.md,BERT-tiny is a pinned CPU-feasible controlled reconstruction and is not equivalent to the legacy bert-base configuration.
+C10,The raw IFND CSV may be redistributed,unsupported,Kaggle data card licence field is Unknown,Do not redistribute the CSV; direct authorised users to the source card and checksum instructions.

@@ -38,7 +38,7 @@ def main() -> None:
     models = ["tfidf_logreg", "fnn", "cnn", "lstm", "bert_tiny"]
     colors = {"random_stratified": "#335C81", "source_disjoint": "#D17A22"}
 
-    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), layout="constrained")
     x = np.arange(len(models))
     width = 0.36
     for index, protocol in enumerate(protocols):
@@ -78,10 +78,17 @@ def main() -> None:
             axis.spines[["top", "right"]].set_visible(False)
 
     axes[0].set_ylabel("Test macro-F1")
-    axes[0].set_ylim(0, 1.10)
+    axes[0].set_ylim(0, 1.08)
     axes[1].set_ylabel("ECE (10 equal-width bins)")
     axes[1].set_ylim(0, 0.26)
-    axes[0].legend(frameon=False, loc="upper left")
+    handles, legend_labels = axes[0].get_legend_handles_labels()
+    fig.legend(
+        handles,
+        legend_labels,
+        frameon=False,
+        loc="outside lower center",
+        ncol=2,
+    )
     fig.suptitle(
         "IFND model reliability across three prespecified seeds",
         fontsize=13,

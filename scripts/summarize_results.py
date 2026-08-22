@@ -43,6 +43,10 @@ def main() -> None:
         "--summary", default="reports/results/comparison_summary.csv"
     )
     parser.add_argument("--gaps", default="reports/results/protocol_gaps.csv")
+    parser.add_argument(
+        "--expected-seeds",
+        help="Comma-separated seed set required in every model/protocol/metric group",
+    )
     args = parser.parse_args()
 
     metrics = pd.read_csv(args.metrics)
@@ -51,6 +55,24 @@ def main() -> None:
     if test.duplicated(duplicate_keys).any():
         duplicates = test.loc[test.duplicated(duplicate_keys, keep=False), duplicate_keys]
         raise ValueError(f"Duplicate test metric rows found:\n{duplicates.head()}")
+    if args.expected_seeds:
+        expected_seeds = {
+            int(value.strip())
+            for value in args.expected_seeds.split(",")
+            if value.strip()
+        }
+        incomplete = []
+        for keys, group in test.groupby(
+            ["split_protocol", "model", "metric"], sort=True
+        ):
+            observed = set(group["seed"].astype(int))
+            if observed != expected_seeds:
+                incomplete.append((keys, sorted(observed)))
+        if incomplete:
+            raise ValueError(
+                "Unexpected seed coverage; expected "
+                f"{sorted(expected_seeds)} in every group: {incomplete[:5]}"
+            )
     summary = (
         test.groupby(["split_protocol", "model", "metric"], sort=True)
         .apply(summarize, include_groups=False)

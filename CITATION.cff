@@ -5,7 +5,7 @@ type: software
 authors:
   - family-names: Tabassum
     given-names: Naazreen
-version: 0.1.0
+version: 0.2.0
 license: MIT
 keywords:
   - misinformation detection
@@ -13,4 +13,3 @@ keywords:
   - reproducibility
   - natural language processing
   - calibration
-
