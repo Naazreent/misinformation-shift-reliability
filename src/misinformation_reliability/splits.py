@@ -73,7 +73,10 @@ def _best_group_holdout(
     target_rate = float(frame["Label"].mean())
     best: tuple[float, np.ndarray, np.ndarray, int] | None = None
     for offset in range(attempts):
-        candidate_seed = seed + offset
+        # Allocate a disjoint candidate-seed block to each prespecified seed.
+        # This prevents repeated-seed evaluations from silently searching almost
+        # the same candidate holdouts (for example seeds 13, 42, and 87).
+        candidate_seed = seed * attempts + offset
         splitter = GroupShuffleSplit(
             n_splits=1,
             test_size=holdout_fraction,
@@ -205,4 +208,3 @@ def make_split(frame: pd.DataFrame, config: dict[str, Any]) -> SplitResult:
     if protocol == "source_disjoint":
         return source_disjoint_split(**common)
     raise ValueError(f"Unknown split protocol: {protocol}")
-

@@ -19,20 +19,23 @@ LABELS = {
     "majority": "Majority",
     "source_only_logreg": "Source only",
     "tfidf_logreg": "TF-IDF text",
+    "fnn": "FNN",
+    "cnn": "CNN",
+    "lstm": "LSTM",
+    "bert_tiny": "BERT-tiny",
 }
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--metrics", default="reports/results/baseline_metrics.csv")
+    parser.add_argument("--summary", default="reports/results/comparison_summary.csv")
     parser.add_argument(
         "--output", default="reports/figures/baseline_protocol_comparison.png"
     )
     args = parser.parse_args()
-    metrics = pd.read_csv(args.metrics)
-    metrics = metrics.loc[metrics["evaluation_split"] == "test"]
+    summary = pd.read_csv(args.summary)
     protocols = ["random_stratified", "source_disjoint"]
-    models = ["majority", "source_only_logreg", "tfidf_logreg"]
+    models = ["tfidf_logreg", "fnn", "cnn", "lstm", "bert_tiny"]
     colors = {"random_stratified": "#335C81", "source_disjoint": "#D17A22"}
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), constrained_layout=True)
@@ -45,25 +48,28 @@ def main() -> None:
             (axes[1], "ece_10", "Calibration error", "Lower is better"),
         ]:
             values = []
+            errors = []
             for model in models:
-                selected = metrics.loc[
-                    (metrics["split_protocol"] == protocol)
-                    & (metrics["model"] == model)
-                    & (metrics["metric"] == metric),
-                    "value",
+                selected = summary.loc[
+                    (summary["split_protocol"] == protocol)
+                    & (summary["model"] == model)
+                    & (summary["metric"] == metric)
                 ]
                 if len(selected) != 1:
                     raise ValueError(
                         f"Expected one {metric} value for {protocol}/{model}; "
                         f"found {len(selected)}"
                     )
-                values.append(float(selected.iloc[0]))
+                values.append(float(selected.iloc[0]["mean"]))
+                errors.append(float(selected.iloc[0]["std"]))
             bars = axis.bar(
                 x + offset,
                 values,
                 width,
                 label=protocol.replace("_", " ").title(),
                 color=colors[protocol],
+                yerr=errors,
+                capsize=3,
             )
             axis.bar_label(bars, fmt="%.3f", padding=2, fontsize=8)
             axis.set_title(f"{title}\n{direction}", fontsize=11, weight="bold")
@@ -72,12 +78,12 @@ def main() -> None:
             axis.spines[["top", "right"]].set_visible(False)
 
     axes[0].set_ylabel("Test macro-F1")
-    axes[0].set_ylim(0, 1.08)
+    axes[0].set_ylim(0, 1.10)
     axes[1].set_ylabel("ECE (10 equal-width bins)")
     axes[1].set_ylim(0, 0.26)
     axes[0].legend(frameon=False, loc="upper left")
     fig.suptitle(
-        "IFND baseline reliability: random vs unseen-source evaluation",
+        "IFND model reliability across three prespecified seeds",
         fontsize=13,
         weight="bold",
     )
@@ -90,4 +96,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

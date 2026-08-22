@@ -19,17 +19,20 @@
   },
   "missing_date_values": 11321,
   "recorded_sources": 29,
-  "received_from": "Naazreen Tabassum",
+  "received_from": "researcher-supplied local copy",
   "received_date": "2026-08-22",
   "dissertation_source_description": "Kaggle public dataset uploaded by Sonal Garg",
-  "source_url": null,
-  "version": null,
-  "license": null,
-  "redistribution_status": "not permitted until source and licence are verified",
+  "source_url": "https://www.kaggle.com/datasets/sonalgarg174/ifnd-dataset",
+  "source_doi": "https://doi.org/10.1007/s40747-021-00552-1",
+  "source_checked_date": "2026-08-22",
+  "version": "Kaggle data card updated approximately five years before access; no semantic version displayed",
+  "license": "Unknown (Kaggle data card, accessed 2026-08-22)",
+  "paper_license": "CC BY 4.0; does not automatically license the scraped dataset records",
+  "redistribution_status": "not redistributed because no affirmative dataset licence was identified",
   "notes": [
     "The supplied CSV contains 56714 rows; the dissertation abstract reports 56768.",
     "Date provenance requires review before temporal evaluation.",
-    "Raw data is excluded from Git."
+    "Raw data is excluded from Git.",
+    "Authorised users can retrieve the dataset from the recorded Kaggle data card and verify this checksum."
   ]
 }
-

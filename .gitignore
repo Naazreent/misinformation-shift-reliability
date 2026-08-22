@@ -16,6 +16,9 @@ artifacts/*
 reports/results/*
 !reports/results/README.md
 !reports/results/baseline_metrics.csv
+!reports/results/all_metrics.csv
+!reports/results/comparison_summary.csv
+!reports/results/protocol_gaps.csv
 !reports/results/run_manifest.json
 
 *.pt

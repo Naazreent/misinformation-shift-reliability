@@ -21,6 +21,12 @@ dependencies = [
   "scipy==1.17.0"
 ]
 
+[project.optional-dependencies]
+neural = [
+  "torch==2.8.0",
+  "transformers==4.56.2"
+]
+
 [project.scripts]
 misinfo-audit-data = "misinformation_reliability.cli:audit_main"
 misinfo-run = "misinformation_reliability.cli:run_main"

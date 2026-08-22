@@ -39,7 +39,21 @@ class SplitTests(unittest.TestCase):
         self.assertFalse(source_sets["train"] & source_sets["test"])
         self.assertFalse(source_sets["validation"] & source_sets["test"])
 
+    def test_source_repetitions_use_distinct_candidate_blocks(self):
+        frame = synthetic_frame()
+        first = source_disjoint_split(frame, 13, 0.7, 0.15, 0.15)
+        second = source_disjoint_split(frame, 42, 0.7, 0.15, 0.15)
+        self.assertNotEqual(
+            first.metadata["test_selection"]["selected_seed"],
+            second.metadata["test_selection"]["selected_seed"],
+        )
+        self.assertTrue(
+            set(first.metadata["sources"]["test"])
+            != set(second.metadata["sources"]["test"])
+            or set(first.metadata["sources"]["validation"])
+            != set(second.metadata["sources"]["validation"])
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
-
