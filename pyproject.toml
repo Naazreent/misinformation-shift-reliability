@@ -14,6 +14,7 @@ authors = [
 ]
 dependencies = [
   "joblib==1.5.3",
+  "matplotlib==3.10.8",
   "numpy==2.3.5",
   "pandas==2.2.3",
   "scikit-learn==1.8.0",
@@ -26,4 +27,3 @@ misinfo-run = "misinformation_reliability.cli:run_main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

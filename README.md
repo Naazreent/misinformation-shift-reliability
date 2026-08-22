@@ -22,7 +22,7 @@ predictions, metrics, and run metadata.
 |---|---|---|
 | Dissertation and original Colab | Legacy evidence | Inspected and preserved; historical claims are not independently reproduced |
 | IFND data audit | Verified locally | Schema, checksum, missingness, duplicates, and source-label association were recomputed from the supplied CSV |
-| Deterministic baselines | In reconstruction | Random and source-disjoint protocols are implemented; generated results must be committed only after verification |
+| Deterministic baselines | Verified single-seed v0.1 | Random and source-disjoint results were recomputed from saved predictions |
 | FNN, CNN, LSTM, BERT comparison | Planned reconstruction | Architectures and tuning budgets require a clean, separately validated implementation |
 | Publication claims | Not ready | No novelty, state-of-the-art, or deployment claim is made |
 
@@ -39,6 +39,22 @@ These observations do not invalidate the dissertation effort. They identify
 the central reliability problem that the reconstruction will test directly.
 See [the reconstruction audit](docs/reconstruction_audit.md) for the exact
 evidence boundary.
+
+## First verified baseline result
+
+| Protocol | TF-IDF test macro-F1 | Accuracy | Brier | ECE-10 |
+|---|---:|---:|---:|---:|
+| Random stratified | 0.9591 | 0.9647 | 0.0343 | 0.0612 |
+| Source-disjoint | 0.9541 | 0.9593 | 0.0384 | 0.0798 |
+
+Under this single selected source holdout, predictive performance drops only
+slightly while calibration worsens. The source-only diagnostic collapses from
+0.9846 to 0.2473 macro-F1, confirming that source identity itself does not
+transfer to unseen publishers. These are verified baseline observations, not a
+final hypothesis test: multiple source holdouts and confidence intervals are
+still required. See [the generated result record](reports/results/README.md).
+
+![Verified baseline comparison](reports/figures/baseline_protocol_comparison.png)
 
 ## Reproduction
 
@@ -95,6 +111,13 @@ python scripts/run_experiment.py --data data/raw/IFND.csv --config configs/rando
 python scripts/run_experiment.py --data data/raw/IFND.csv --config configs/source_disjoint.json
 ```
 
+Or run the complete audit, both protocols, independent metric verification,
+aggregation, and figure generation with one command:
+
+```bash
+python scripts/reproduce_baselines.py --data data/raw/IFND.csv
+```
+
 Each run writes a unique directory under `artifacts/` containing the resolved
 configuration, split assignments, per-example predictions, long-form metrics,
 and a run record with the data checksum and software/system metadata.
@@ -146,4 +169,3 @@ domain review, and appropriate safeguards.
 
 Code is released under the [MIT License](LICENSE). Dataset and pretrained-model
 terms are separate. Citation metadata is provided in [CITATION.cff](CITATION.cff).
-

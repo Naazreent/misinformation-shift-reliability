@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""Generate the baseline comparison figure from machine-readable metrics."""
+
+from __future__ import annotations
+
+import argparse
+import os
+import tempfile
+from pathlib import Path
+
+os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "misinfo-matplotlib"))
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
+
+LABELS = {
+    "majority": "Majority",
+    "source_only_logreg": "Source only",
+    "tfidf_logreg": "TF-IDF text",
+}
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--metrics", default="reports/results/baseline_metrics.csv")
+    parser.add_argument(
+        "--output", default="reports/figures/baseline_protocol_comparison.png"
+    )
+    args = parser.parse_args()
+    metrics = pd.read_csv(args.metrics)
+    metrics = metrics.loc[metrics["evaluation_split"] == "test"]
+    protocols = ["random_stratified", "source_disjoint"]
+    models = ["majority", "source_only_logreg", "tfidf_logreg"]
+    colors = {"random_stratified": "#335C81", "source_disjoint": "#D17A22"}
+
+    fig, axes = plt.subplots(1, 2, figsize=(11, 4.6), constrained_layout=True)
+    x = np.arange(len(models))
+    width = 0.36
+    for index, protocol in enumerate(protocols):
+        offset = (index - 0.5) * width
+        for axis, metric, title, direction in [
+            (axes[0], "macro_f1", "Predictive performance", "Higher is better"),
+            (axes[1], "ece_10", "Calibration error", "Lower is better"),
+        ]:
+            values = []
+            for model in models:
+                selected = metrics.loc[
+                    (metrics["split_protocol"] == protocol)
+                    & (metrics["model"] == model)
+                    & (metrics["metric"] == metric),
+                    "value",
+                ]
+                if len(selected) != 1:
+                    raise ValueError(
+                        f"Expected one {metric} value for {protocol}/{model}; "
+                        f"found {len(selected)}"
+                    )
+                values.append(float(selected.iloc[0]))
+            bars = axis.bar(
+                x + offset,
+                values,
+                width,
+                label=protocol.replace("_", " ").title(),
+                color=colors[protocol],
+            )
+            axis.bar_label(bars, fmt="%.3f", padding=2, fontsize=8)
+            axis.set_title(f"{title}\n{direction}", fontsize=11, weight="bold")
+            axis.set_xticks(x, [LABELS[model] for model in models])
+            axis.grid(axis="y", alpha=0.25)
+            axis.spines[["top", "right"]].set_visible(False)
+
+    axes[0].set_ylabel("Test macro-F1")
+    axes[0].set_ylim(0, 1.08)
+    axes[1].set_ylabel("ECE (10 equal-width bins)")
+    axes[1].set_ylim(0, 0.26)
+    axes[0].legend(frameon=False, loc="upper left")
+    fig.suptitle(
+        "IFND baseline reliability: random vs unseen-source evaluation",
+        fontsize=13,
+        weight="bold",
+    )
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output, dpi=180, bbox_inches="tight")
+    plt.close(fig)
+    print(output)
+
+
+if __name__ == "__main__":
+    main()
+

@@ -15,9 +15,10 @@ artifacts/*
 
 reports/results/*
 !reports/results/README.md
+!reports/results/baseline_metrics.csv
+!reports/results/run_manifest.json
 
 *.pt
 *.pth
 *.bin
 *.safetensors
-
