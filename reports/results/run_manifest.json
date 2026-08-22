@@ -1,16 +1,16 @@
 {
   "evidence_status": "verified_single_seed_baseline",
   "data_sha256": "fafbb516c5d78a26ed1cfdf5077f989eae24c1258ad3c4de731ac6d6932505d6",
-  "code_revision": "089241c667b469ae1727aa27435e7ea0d9e55935",
+  "code_revision": "1489d758e2e25571a8f02b1a1ad022d4f1193710",
   "runs": [
     {
-      "run_id": "20260822T212045Z-ifnd_random_stratified_v1-d6a3f39e",
+      "run_id": "20260822T212805Z-ifnd_random_stratified_v1-338ab3f2",
       "protocol": "random_stratified",
       "status": "completed",
       "metrics_recomputed_from_predictions": true
     },
     {
-      "run_id": "20260822T212100Z-ifnd_source_disjoint_v1-79ca7cf1",
+      "run_id": "20260822T212811Z-ifnd_source_disjoint_v1-682d7b1e",
       "protocol": "source_disjoint",
       "status": "completed",
       "metrics_recomputed_from_predictions": true
